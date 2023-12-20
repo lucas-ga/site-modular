@@ -1,0 +1,11 @@
+<div>
+  <h2>Usuários:</h2>
+  <ul>
+    <li *ngFor="let user of users">
+      Nome: {{ user.name }} <br />
+      Data de Nascimento: {{ user.birthDate }} <br />
+      Login:
+      {{ user.login }}
+    </li>
+  </ul>
+</div>
