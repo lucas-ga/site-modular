@@ -1,0 +1,9 @@
+<ul>
+  <li
+    *ngFor="let menuItem of menu"
+    routerLink="{{ menuItem.path }}"
+    class="menu-item"
+  >
+    {{ menuItem.name }}
+  </li>
+</ul>

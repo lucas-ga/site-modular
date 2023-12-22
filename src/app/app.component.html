@@ -1,8 +1,18 @@
-<p>Header (WIP)</p>
-<nav>
-  <a routerLink="/">Início</a>
-  <a routerLink="/userlist">Lista Usuários</a>
-  <a routerLink="/userregistration">Cadastro Usuários</a>
-</nav>
-<router-outlet></router-outlet>
-<p>Footer (WIP)</p>
+<app-header class="app-header"></app-header
+><mat-sidenav-container>
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    hasBackdrop="false"
+    [(opened)]="opened"
+    (opened)="events.push('open!')"
+    (closed)="events.push('close!')"
+    ><app-menu></app-menu
+  ></mat-sidenav>
+  <mat-sidenav-content>
+    <div class="main-area">
+      <router-outlet></router-outlet>
+    </div>
+    <app-footer class="app-footer"></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
