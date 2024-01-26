@@ -1,2 +1,16 @@
-<p>user-registration works!</p>
-<p>implementar após aula 29</p>
+<div class="form-group">
+  <mat-form-field>
+    <mat-label>Nome</mat-label>
+    <input matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Data de Nascimento</mat-label>
+    <input matInput [matDatepicker]="picker" disabled="true" />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker disabled="false"></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Nome de usuário</mat-label>
+    <input matInput />
+  </mat-form-field>
+</div>
