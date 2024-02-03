@@ -1,21 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { User } from '../../user';
+import { UserService } from '../../services/user.service'
 
-const USER_LIST: User[] = [
-  { name: 'Lucas', birthDate: new Date('1999-08-15'), login: 'lucas.silva', password: 'leleh', _id: 1},
-  { name: 'Letícia', birthDate: new Date('2002-04-27'), login: 'leticia.menegazzi', password: 'luquinhas', _id: 2},
-  { name: 'zequinha', birthDate: new Date('1864-01-01'), login: 'ze.quinha', password: 'zeze', _id: 3}
-]
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.sass',
 })
-export class UserListComponent implements OnInit{
+export class UserListComponent implements OnInit {
+  USER_LIST: User[] = [];
+  displayedColumns: string[] = ['_id', 'name', 'birthDate', 'login'];
+  dataSource: any;
 
-  constructor() {}
-  ngOnInit(): void {}
+  constructor(private userService: UserService) {}
 
-  displayedColumns: string[] = ['_id','name','birthDate','login'];
-  dataSource = USER_LIST;
+  ngOnInit() {
+    this.userService.getAllUsers().subscribe((users: User[]) => {
+      this.USER_LIST = users;
+      this.dataSource = users; // Assign to dataSource directly
+    }, (error: any) => {
+      console.error('Error fetching users:', error);
+      // Handle error gracefully, e.g., display an error message
+    });
+  }
 }

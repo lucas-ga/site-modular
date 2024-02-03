@@ -1,4 +1,8 @@
-<div class="form-group">
+<form
+  [formGroup]="applyForm"
+  (submit)="submitRegistration()"
+  class="form-group"
+>
   <mat-form-field>
     <mat-label>Nome</mat-label>
     <input matInput />
@@ -13,4 +17,7 @@
     <mat-label>Nome de usuário</mat-label>
     <input matInput />
   </mat-form-field>
-</div>
+  <button class="btn-confirm" mat-raised-button color="primary">
+    Cadastrar
+  </button>
+</form>
